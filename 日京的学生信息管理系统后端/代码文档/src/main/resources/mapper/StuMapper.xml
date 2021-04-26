@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whj.stumanagement.rj_stumanagement_back.mapper.StuMapper">
+  <resultMap id="BaseResultMap" type="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    <id column="sno" jdbcType="INTEGER" property="sno" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="sage" jdbcType="INTEGER" property="sage" />
+    <result column="saddress" jdbcType="VARCHAR" property="saddress" />
+    <result column="spwd" jdbcType="VARCHAR" property="spwd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sno, sname, sage, saddress, spwd
+  </sql>
+  <!--不造根据啥查的-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from stu
+    where sno = #{sno,jdbcType=INTEGER}
+  </select>
+  <!--查询所有学生的信息-->
+  <select id="queryAllStudents" resultMap="BaseResultMap">
+    select * from stu
+  </select>
+  <!--删除-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stu
+    where sno = #{sno,jdbcType=INTEGER}
+  </delete>
+  <!--插入-->
+  <insert id="insert" parameterType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    insert into stu (sno, sname, sage,
+      saddress, spwd)
+    values (#{sno,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=INTEGER}, 
+      #{saddress,jdbcType=VARCHAR}, #{spwd,jdbcType=VARCHAR})
+  </insert>
+  <!--不造咋插-->
+  <insert id="insertSelective" parameterType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    insert into stu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        sno,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="sage != null">
+        sage,
+      </if>
+      <if test="saddress != null">
+        saddress,
+      </if>
+      <if test="spwd != null">
+        spwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sage != null">
+        #{sage,jdbcType=INTEGER},
+      </if>
+      <if test="saddress != null">
+        #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="spwd != null">
+        #{spwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据学号更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    update stu
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sage != null">
+        sage = #{sage,jdbcType=INTEGER},
+      </if>
+      <if test="saddress != null">
+        saddress = #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="spwd != null">
+        spwd = #{spwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sno = #{sno,jdbcType=INTEGER}
+  </update>
+  <!--不造根据咋更新-->
+  <update id="updateByPrimaryKey" parameterType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    update stu
+    set sname = #{sname,jdbcType=VARCHAR},
+      sage = #{sage,jdbcType=INTEGER},
+      saddress = #{saddress,jdbcType=VARCHAR},
+      spwd = #{spwd,jdbcType=VARCHAR}
+    where sno = #{sno,jdbcType=INTEGER}
+  </update>
+  <!--登陆验证-->
+  <select id="login" parameterType="Stu" resultType="Stu">
+    select * from stu where sname=#{sname} and spwd=#{spwd}
+  </select>
+  <!--分页查询-->
+    <select id="Pagination" parameterType="Map" resultType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+      select * from stu limit #{currIndex} , #{pageSize}
+    </select>
+</mapper>

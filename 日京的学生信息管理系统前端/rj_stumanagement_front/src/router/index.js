@@ -6,6 +6,7 @@ import register from '../components/register.vue'
 import test from '../components/test.vue'
 import home from '../components/home.vue'
 import welcome from '../components/welcome.vue'
+import index from '../components/index.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
     name: 'register',
     component: register
   },
+  // b站链接
+  {
+    path:'https://space.bilibili.com/231824541'
+  },
+  // 测试用的可删
   {
     path: '/test',
     name: 'test',
@@ -41,6 +47,9 @@ const routes = [
     },{
       path:'/Studisplay',
       component:Studisplay
+    },{
+      path:'/index',
+      component:index
     }]
   }
 ]

@@ -126,7 +126,6 @@ export default {
         }
         // 发送axios请求  $http是我封装的接口地址
         this.$http.get(url,{params}).then(res=>{
-          console.log(1111)
           // 把学生信息赋值给tableData
           this.tableData=res.data;
         })
@@ -238,13 +237,6 @@ export default {
 }
 </script>
 <style>
-  body{
-      margin: 0px!important;
-      height: 100%!important;
-  }
-  #app{
-    height: 750px;
-  }
   .el-header{
     background-color: #B3C0D1;
     color: rgb(255, 255, 255);

@@ -45,7 +45,7 @@ export default {
                     this.$message.success('登陆成功')
                     this.$router.push('/Studisplay')
                 }else{
-                    this.$message.error('登陆失败')
+                    this.$message.error('登陆失败,用户名或密码错误')
                 }
             })
         },
@@ -56,7 +56,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
     .login_container{
         background-color:#2b4b6b;
         height: 100%;

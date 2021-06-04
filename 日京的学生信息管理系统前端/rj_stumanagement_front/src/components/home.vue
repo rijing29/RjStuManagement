@@ -15,7 +15,7 @@
                 </span>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item >个人信息</el-dropdown-item>
-                  <el-dropdown-item divided>退出</el-dropdown-item>
+                  <el-dropdown-item divided @click.native="quitLogin">退出</el-dropdown-item>
                   <el-dropdown-item divided>修改密码</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
@@ -75,17 +75,16 @@ export default {
     data(){
         return{
         }
+    },
+    methods:{
+      quitLogin(){
+        this.$router.push('/login')
+        this.$message.success('退出登录成功')
+      }
     }
 }
 </script>
 <style>
-  body{
-      margin: 0px!important;
-      height: 100%!important;
-  }
-  #app{
-    height: 750px;
-  }
   .el-header{
     background-color: #B3C0D1;
     color: rgb(255, 255, 255);

@@ -9,6 +9,11 @@ import welcome from '../components/welcome.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // 设置默认路由，页面刚启动的跳转页面
+  {
+    path:"*",
+    redirect:'/login'
+  },
   {
     path: '/login',
     name: 'login',

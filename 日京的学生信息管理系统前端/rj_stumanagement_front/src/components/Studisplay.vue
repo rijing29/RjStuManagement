@@ -5,7 +5,7 @@
             <el-container>
               <el-main>
                 <!-- 中间的学生信息展示 -->
-                <el-table :data="tableData" stripe align=center header-align=center  style="width: 800px">
+                <el-table :data="tableData.slice((paginations.currentPage-1)*paginations.PageSize,paginations.currentPage*paginations.PageSize)" stripe align=center header-align=center  style="width: 800px">
                     <el-table-column type="index"></el-table-column>
                     <el-table-column prop="sno" label="学号" width="140" align="center" > </el-table-column>
                     <el-table-column prop="sname" label="姓名" width="140" align="center" > </el-table-column>
@@ -114,18 +114,14 @@ export default {
     },
     // 页面加载时就获取学生的所有信息
     created(){
-      this.getStuList(this.paginations.PageSize,this.paginations.currentPage)
+      this.getStuList()
     },
     methods:{
-      getStuList(PageSize,currentPage){
+      getStuList(){
         // 要请求的地址
-        var url="/stupage"
-        var params={
-          'pageSize':PageSize,
-          'currPage':currentPage,
-        }
+        var url="/StuDisplay"
         // 发送axios请求  $http是我封装的接口地址
-        this.$http.get(url,{params}).then(res=>{
+        this.$http.get(url).then(res=>{
           // 把学生信息赋值给tableData
           this.tableData=res.data;
         })
@@ -213,6 +209,7 @@ export default {
         })
       },
       // //////////////////////////////////分页/////////////////////////////////
+      // //分页/
       // 每页显示多少条
       handleSizeChange(val) {
         // 改变每页显示的条数 
@@ -227,12 +224,12 @@ export default {
         this.paginations.currentPage=val
         console.log(`当前页: ${val}`);
       },
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+      // handleOpen(key, keyPath) {
+      //   console.log(key, keyPath);
+      // },
+      // handleClose(key, keyPath) {
+      //   console.log(key, keyPath);
+      // }
     }
 }
 </script>

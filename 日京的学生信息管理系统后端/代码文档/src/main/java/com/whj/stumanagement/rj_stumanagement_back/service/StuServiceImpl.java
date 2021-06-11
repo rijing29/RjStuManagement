@@ -74,7 +74,7 @@ public class StuServiceImpl implements StuService{
 
     public static void main(String[] args) {
         StuService stuService = new StuServiceImpl();
-        List<Stu> stuList = stuService.QueryAllStudents();
+        List<Stu> stuList = stuService.Pagination(1, 2);
         for(int i=0;i<stuList.size();i++)
             System.out.println(stuList.get(i));
     }

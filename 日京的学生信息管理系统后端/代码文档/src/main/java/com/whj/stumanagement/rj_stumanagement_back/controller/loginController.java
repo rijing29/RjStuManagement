@@ -21,7 +21,7 @@ public class loginController {
             code = 200;
             System.out.println("登录成功");
         }else
-            System.out.println("登陆失败");
+            System.out.println("登陆失败，用户名或密码错误");
         return code;
     }
 }

@@ -29,7 +29,8 @@ export default {
     data(){
         return{
             sname:'',
-            spwd:''
+            spwd:'',
+            result:''
         }
     },
     methods:{
@@ -41,9 +42,17 @@ export default {
                 'spwd':this.spwd
             }
             this.$http.get(url,{params}).then(res=>{
-                if(res.data==200){
+                this.result=res.data
+                if(res.data[0]==200){
                     this.$message.success('登陆成功')
-                    this.$router.push('/Studisplay')
+                    // this.$router.push('/Studisplay')
+                    // 传用户名到home.vue
+                    this.$router.push({
+                        path:'/home',
+                        query:{
+                            sname:res.data[1]
+                        }
+                    })
                 }else{
                     this.$message.error('登陆失败,用户名或密码错误')
                 }

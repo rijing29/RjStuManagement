@@ -41,7 +41,7 @@ export default {
     methods:{
         // 注册功能的实现
         register(){
-             var url="/register"
+            var url="/register"
             var params={
                 'sno':this.sno,
                 'sname':this.sname,

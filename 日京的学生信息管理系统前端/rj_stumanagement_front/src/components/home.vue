@@ -9,7 +9,7 @@
                 <span class="el-dropdown-link">
                   <div class="dropdown_con">
                     <img class="userimg_con" src="../assets/img/user.png" alt="">
-                    <span class="info_con">王胡景</span>
+                    <span class="info_con">{{sname}}</span>
                     <i class="el-icon-arrow-down el-icon--right"></i>
                   </div>
                 </span>
@@ -75,9 +75,20 @@ export default {
     name:"Studisplay",
     data(){
         return{
+          sname:''
         }
     },
+    mounted(){
+      this.getSname()
+    },
     methods:{
+      // 获取用户名
+      getSname(){
+        var sname=this.$route.query.sname
+        this.sname=sname
+        console.log("传过来的sname")
+        console.log(this.sname)
+      },
       quitLogin(){
         this.$router.push('/login')
         this.$message.success('退出登录成功')

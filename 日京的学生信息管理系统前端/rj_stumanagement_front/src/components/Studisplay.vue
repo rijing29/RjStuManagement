@@ -122,6 +122,8 @@ export default {
         var url="/StuDisplay"
         // 发送axios请求  $http是我封装的接口地址
         this.$http.get(url).then(res=>{
+          console.log("学生展示的返回值：")
+          console.log(res)
           // 把学生信息赋值给tableData
           this.tableData=res.data;
         })

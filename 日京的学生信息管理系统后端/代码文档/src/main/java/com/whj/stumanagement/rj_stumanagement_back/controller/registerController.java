@@ -27,7 +27,5 @@ public class registerController {
             System.out.println("新注册的学生"+student);
         }
         return code;
-
-
     }
 }

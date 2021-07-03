@@ -7,6 +7,7 @@ import test from '../components/test.vue'
 import home from '../components/home.vue'
 import welcome from '../components/welcome.vue'
 import index from '../components/index.vue'
+import resetPwd from '../components/resetPwd.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,6 +25,12 @@ const routes = [
     path: '/register',
     name: 'register',
     component: register
+  },
+  // 修改密码
+  {
+    path: '/resetPwd',
+    name: 'resetPwd',
+    component: resetPwd
   },
   // b站链接
   {
@@ -50,6 +57,9 @@ const routes = [
     },{
       path:'/index',
       component:index
+    },{
+      path:'/resetPwd',
+      component:resetPwd
     }]
   }
 ]

@@ -16,7 +16,7 @@
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item >个人信息</el-dropdown-item>
                   <el-dropdown-item divided @click.native="quitLogin">退出</el-dropdown-item>
-                  <el-dropdown-item divided>修改密码</el-dropdown-item>
+                  <el-dropdown-item divided @click.native="resetPwd">修改密码</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -92,6 +92,14 @@ export default {
       quitLogin(){
         this.$router.push('/login')
         this.$message.success('退出登录成功')
+      },
+      resetPwd(){
+        this.$router.push({
+            path:'/resetPwd',
+            query:{
+                sname:this.sname
+            }
+        })
       }
     }
 }

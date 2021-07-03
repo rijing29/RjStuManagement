@@ -72,6 +72,22 @@ public class StuServiceImpl implements StuService{
         return p_list;
     }
 
+//    修改密码
+    public boolean resetPwd(int sno,String spwd) {
+        int i = stuMapper.resetPwd(sno,spwd);
+        if(i>0)
+            return true;
+        else
+            return false;
+    }
+
+//    根据sname拿到sno
+    public int getSno(String sname) {
+        int sno = stuMapper.getSno(sname);
+        return sno;
+    }
+
+    //虽然但是好像main是没用的
     public static void main(String[] args) {
         StuService stuService = new StuServiceImpl();
         List<Stu> stuList = stuService.Pagination(1, 2);

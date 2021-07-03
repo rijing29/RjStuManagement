@@ -105,7 +105,17 @@
     select * from stu where sname=#{sname} and spwd=#{spwd}
   </select>
   <!--分页查询-->
-    <select id="Pagination" parameterType="Map" resultType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
-      select * from stu limit #{currIndex} , #{pageSize}
-    </select>
+  <select id="Pagination" parameterType="Map" resultType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    select * from stu limit #{currIndex} , #{pageSize}
+  </select>
+  <!--修改密码-->
+  <update id="resetPwd" parameterType="com.whj.stumanagement.rj_stumanagement_back.entity.Stu">
+    update stu
+    set spwd=#{spwd,jdbcType=INTEGER}
+    where sno=#{sno,jdbcType=INTEGER}
+  </update>
+  <!--根据sname拿到sno-->
+  <select id="getSno" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select sno from stu where sname=#{sname}
+  </select>
 </mapper>

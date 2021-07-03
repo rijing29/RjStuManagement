@@ -20,4 +20,8 @@ public interface StuService {
     boolean login(String sname,String spwd);
 //    分页查询
     List<Stu> Pagination(int currPage, int pageSize);
+//    修改密码
+    boolean resetPwd(int sno,String spwd);
+//   根据sname拿到sno
+    int getSno(String sname);
 }

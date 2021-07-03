@@ -11,11 +11,11 @@ import java.util.Map;
 @Repository
 @Mapper
 public interface StuMapper {
-
+//删除
     int deleteByPrimaryKey(Integer sno);
-
+//插入
     int insert(Stu record);
-
+//
     int insertSelective(Stu record);
 
     Stu selectByPrimaryKey(Integer sno);
@@ -29,4 +29,8 @@ public interface StuMapper {
     Stu login(@Param("sname") String sname,@Param("spwd") String spwd);
 //    分页查询
     List<Stu> Pagination(Map<String,Object> data);
+//    修改密码
+    int resetPwd(@Param("sno") int sno,@Param("spwd") String spwd);
+//    根据sname拿到sno
+    int getSno(@Param("sname")String sname);
 }
